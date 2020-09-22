@@ -1,7 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 export default function MessageSender() {
-	return <Wrapper>메시지 전송부</Wrapper>;
+  return (
+    <Wrapper>
+      <input type="text"></input>
+      <button>전송</button>
+    </Wrapper>
+  );
 }
 const Wrapper = styled.div``;

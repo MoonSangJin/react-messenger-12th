@@ -21,6 +21,24 @@ export default function ChattingScreen() {
   ];
 
   const [messageList, setMessageList] = useState(MSGLIST); //intial state값을 MSGLIST로
+  const [newMessage, setNewMessageList] = useState({
+    user: false,
+    content: "",
+  });
+
+  const changeInputMessage = (e) => {
+    const { name, value } = e.target;
+    setNewMessageList({
+      ...newMessage,
+      [name]: value,
+    });
+  };
+
+  const addMessage = (e) => {
+    e.preventDefault();
+    setMessageList([...messageList, newMessage]);
+    setNewMessageList({ ...newMessage, content: "" });
+  };
 
   return (
     <Wrapper>
@@ -32,35 +50,53 @@ export default function ChattingScreen() {
             return (
               <EUNKOMessage>
                 <Image src={EUNKO} />
-                {message.content}
+                <Content>{message.content}</Content>
               </EUNKOMessage>
             );
           } else {
             //시원님 대화창
             return (
               <COOLMessage>
+                <Content>{message.content}</Content>
                 <Image src={COOL} />
-                {message.content}
               </COOLMessage>
             );
           }
         })}
       </Chatting>
-      <MessageSender></MessageSender>
+      <MessageSender
+        {...{ changeInputMessage }}
+        {...{ newMessage }}
+        {...{ addMessage }}
+      />
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  background: #bbdefb;
+`;
 const Chatting = styled.div``;
 const EUNKOMessage = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 const COOLMessage = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 `;
 const Image = styled.img`
-  width: 3rem;
+  width: 60px;
+  padding: 0.5rem;
+  border-radius: 2rem;
+`;
+const Content = styled.div`
+  background: white;
+  border-radius: 0.7rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  text-align: center;
 `;

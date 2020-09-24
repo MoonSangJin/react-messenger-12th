@@ -21,14 +21,15 @@ export default function ChattingScreen() {
   ];
 
   const [messageList, setMessageList] = useState(MSGLIST); //intial state값을 MSGLIST로
-  const [newMessage, setNewMessageList] = useState({
+  const [newMessage, setNewMessage] = useState({
     user: false,
     content: "",
   });
 
   const changeInputMessage = (e) => {
-    const { name, value } = e.target;
-    setNewMessageList({
+    const { name, value } = e.target; //name로 구별, value는 값 자체
+    console.log(name, value); //log 칠때마다
+    setNewMessage({
       ...newMessage,
       [name]: value,
     });
@@ -36,14 +37,38 @@ export default function ChattingScreen() {
 
   const addMessage = (e) => {
     e.preventDefault();
-    setMessageList([...messageList, newMessage]);
-    setNewMessageList({ ...newMessage, content: "" });
+    if (newMessage.content) {
+      setMessageList([...messageList, newMessage]);
+    } else {
+      alert("메시지를 입력하세요");
+    }
+    setNewMessage({ ...newMessage, content: "" });
+  };
+
+  const changeUser = (e) => {
+    e.preventDefault();
+    if (!newMessage.user) {
+      //현재 시원님인 상태
+      console.log("시원->고은 상태변경");
+      return setNewMessage({
+        user: true, //누르면 고은님으로 change
+        content: newMessage.content,
+      });
+    } else {
+      console.log("고은->시원 상태변경");
+      return setNewMessage({
+        user: false,
+        content: newMessage.content,
+      });
+    }
   };
 
   return (
     <Wrapper>
-      <Header></Header>
-      <Chatting>
+      <HeadrWrapper>
+        <Header {...{ changeUser }} {...{ newMessage }}></Header>
+      </HeadrWrapper>
+      <Chatting className="chatting">
         {messageList.map((message) => {
           if (message.user) {
             //user가 true인 경우=> 즉 고은님 대화만 보임
@@ -73,10 +98,16 @@ export default function ChattingScreen() {
   );
 }
 
-const Wrapper = styled.div`
-  background: #bbdefb;
+const Wrapper = styled.div``;
+const HeadrWrapper = styled.div`
+  position: fixed;
+  width: 100%;
 `;
-const Chatting = styled.div``;
+const Chatting = styled.div`
+  background: #bbdefb;
+  display: flex;
+  flex-direction: column;
+`;
 const EUNKOMessage = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -88,7 +119,7 @@ const COOLMessage = styled.div`
 const Image = styled.img`
   width: 60px;
   padding: 0.5rem;
-  border-radius: 2rem;
+  border-radius: 30px;
 `;
 const Content = styled.div`
   background: white;

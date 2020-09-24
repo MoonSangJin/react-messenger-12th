@@ -8,16 +8,37 @@ export default function MessageSender({
 }) {
   return (
     <Wrapper>
-      <input
+      <Input
         type="text"
-        autofocus
         name="content"
         placeholder="할 말을 입력하세요"
         onChange={changeInputMessage}
         value={newMessage.content}
-      ></input>
-      <button onClick={addMessage}>전송</button>
+      ></Input>
+      <Button onClick={addMessage}>전송</Button>
     </Wrapper>
   );
 }
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+`;
+const Input = styled.input`
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+`;
+const Button = styled.button`
+  background-color: #feeb75;
+  width: 5rem;
+  height: 3rem;
+  border-radius: 20px;
+`;

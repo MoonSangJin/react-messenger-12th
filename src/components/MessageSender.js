@@ -14,6 +14,11 @@ export default function MessageSender({
         placeholder="할 말을 입력하세요"
         onChange={changeInputMessage}
         value={newMessage.content}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            addMessage(e);
+          }
+        }}
       ></Input>
       <Button onClick={addMessage}>전송</Button>
     </Wrapper>
@@ -30,15 +35,20 @@ const Wrapper = styled.div`
 `;
 const Input = styled.input`
   border-radius: 25px;
-  background-color: rgba(255, 255, 255, 0.8);
   width: 100%;
   height: 1rem;
   padding: 1rem;
   margin: 1rem;
+  border-color: black;
+  outline: none;
 `;
 const Button = styled.button`
   background-color: #feeb75;
   width: 5rem;
-  height: 3rem;
+  height: 3.3rem;
   border-radius: 20px;
+  margin-right: 1rem;
+  border-color: black;
+  outline: none;
+  font-weight: bold;
 `;

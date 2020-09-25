@@ -37,6 +37,7 @@ const Wrapper = styled.div`
   width: 100vw;
   background-color: rgba(255, 255, 255, 0.8);
   display: flex;
+  position: fixed;
   width: 100%;
 `;
 const ShowUser = styled.div`

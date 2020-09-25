@@ -28,7 +28,6 @@ export default function ChattingScreen() {
 
   const changeInputMessage = (e) => {
     const { name, value } = e.target; //name로 구별, value는 값 자체
-    console.log(name, value); //log 칠때마다
     setNewMessage({
       ...newMessage,
       [name]: value,
@@ -63,12 +62,17 @@ export default function ChattingScreen() {
     }
   };
 
+  useEffect(() => {
+    console.log("new message", messageList);
+    window.scrollBy(0, window.innerHeight);
+    window.scrollBy({ behavior: "smooth" });
+  }, [messageList]); //messageList가 변경됐을때 스크롤 내림
+
   return (
     <Wrapper>
-      <HeadrWrapper>
-        <Header {...{ changeUser }} {...{ newMessage }}></Header>
-      </HeadrWrapper>
+      <Header {...{ changeUser }} {...{ newMessage }}></Header>
       <Chatting className="chatting">
+        <Empty />
         {messageList.map((message) => {
           if (message.user) {
             //user가 true인 경우=> 즉 고은님 대화만 보임
@@ -94,17 +98,18 @@ export default function ChattingScreen() {
         {...{ newMessage }}
         {...{ addMessage }}
       />
+      <Empty />
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div``;
-const HeadrWrapper = styled.div`
-  position: fixed;
-  width: 100%;
+const Wrapper = styled.div`
+  background: #abc1d1;
+`;
+const Empty = styled.div`
+  height: 100px;
 `;
 const Chatting = styled.div`
-  background: #bbdefb;
   display: flex;
   flex-direction: column;
 `;

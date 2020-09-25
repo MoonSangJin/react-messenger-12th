@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Header(props) {
+export default function Header({ changeUser, newMessage }) {
   const EUNKO = "https://img.techpowerup.org/200908/eun.png";
   const COOL = "https://img.techpowerup.org/200908/NjRiY2JjOGU5YzQz.png";
-  const { changeUser } = props;
-  const { newMessage } = props;
-
   const userCheck = () => {
     if (newMessage.user) {
       return <Image src={EUNKO} />;

@@ -27,7 +27,7 @@ export default function ChattingScreen() {
   });
 
   const changeInputMessage = (e) => {
-    const { name, value } = e.target; //name로 구별, value는 값 자체
+    const { name, value } = e.target; //name으로 구별, value는 값 자체
     setNewMessage({
       ...newMessage,
       [name]: value,
@@ -48,13 +48,11 @@ export default function ChattingScreen() {
     e.preventDefault();
     if (!newMessage.user) {
       //현재 시원님인 상태
-      console.log("시원->고은 상태변경");
       return setNewMessage({
         user: true, //누르면 고은님으로 change
         content: newMessage.content,
       });
     } else {
-      console.log("고은->시원 상태변경");
       return setNewMessage({
         user: false,
         content: newMessage.content,
@@ -63,7 +61,6 @@ export default function ChattingScreen() {
   };
 
   useEffect(() => {
-    console.log("new message", messageList);
     window.scrollBy(0, window.innerHeight);
     window.scrollBy({ behavior: "smooth" });
   }, [messageList]); //messageList가 변경됐을때 스크롤 내림
@@ -73,11 +70,11 @@ export default function ChattingScreen() {
       <Header {...{ changeUser }} {...{ newMessage }}></Header>
       <Chatting className="chatting">
         <Empty />
-        {messageList.map((message) => {
+        {messageList.map((message, index) => {
           if (message.user) {
             //user가 true인 경우=> 즉 고은님 대화만 보임
             return (
-              <EUNKOMessage>
+              <EUNKOMessage key={index}>
                 <Image src={EUNKO} />
                 <Content>{message.content}</Content>
               </EUNKOMessage>
@@ -85,7 +82,7 @@ export default function ChattingScreen() {
           } else {
             //시원님 대화창
             return (
-              <COOLMessage>
+              <COOLMessage key={index}>
                 <Content>{message.content}</Content>
                 <Image src={COOL} />
               </COOLMessage>

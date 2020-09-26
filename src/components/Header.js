@@ -1,32 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Header({ changeUser, newMessage }) {
-  const EUNKO = "https://img.techpowerup.org/200908/eun.png";
-  const COOL = "https://img.techpowerup.org/200908/NjRiY2JjOGU5YzQz.png";
-  const userCheck = () => {
-    if (newMessage.user) {
-      return <Image src={EUNKO} />;
-    } else {
-      return <Image src={COOL} />;
-    }
-  };
-
-  const displayName = () => {
-    if (newMessage.user) {
-      return "고은";
-    } else {
-      return "정쿨";
-    }
-  };
-
+export default function Header({ changeUser, user, imgUrl }) {
   return (
     <Wrapper>
-      <ChangeButton onClick={changeUser}>{userCheck()}</ChangeButton>
-      <ShowUser>
-        <UserName>{displayName()}</UserName>
+      <ChangeButton onClick={changeUser}>
+        <Image src={imgUrl}></Image>
+      </ChangeButton>
+      <UserInfo>
+        <UserName>{user}</UserName>
         <UserOn>현재 활동중</UserOn>
-      </ShowUser>
+      </UserInfo>
     </Wrapper>
   );
 }
@@ -37,7 +21,7 @@ const Wrapper = styled.div`
   position: fixed;
   width: 100%;
 `;
-const ShowUser = styled.div`
+const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,10 +32,13 @@ const UserName = styled.div`
 
 const UserOn = styled.div``;
 
-const ChangeButton = styled.div``;
+const ChangeButton = styled.button`
+  all: unset;
+`;
 
 const Image = styled.img`
   width: 5rem;
-  border-radius: 1rem;
+  height: 5rem;
+  border-radius: 2rem;
   margin: 10px;
 `;

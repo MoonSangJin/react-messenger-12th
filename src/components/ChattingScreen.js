@@ -45,49 +45,32 @@ export default function ChattingScreen() {
   };
 
   const changeUser = (e) => {
-    e.preventDefault();
-    if (!newMessage.user) {
-      //현재 시원님인 상태
-      return setNewMessage({
-        user: true, //누르면 고은님으로 change
-        content: newMessage.content,
-      });
-    } else {
-      return setNewMessage({
-        user: false,
-        content: newMessage.content,
-      });
-    }
-  };
+    return newMessage.user
+      ? setNewMessage({ user: false, content: newMessage.content })
+      : setNewMessage({ user: true, content: newMessage.content });
+  }; //삼항연산자로 수정
 
   useEffect(() => {
-    window.scrollBy(0, window.innerHeight);
+    window.scrollBy(0, document.body.scrollHeigh);
     window.scrollBy({ behavior: "smooth" });
   }, [messageList]); //messageList가 변경됐을때 스크롤 내림
 
   return (
     <Wrapper>
-      <Header {...{ changeUser }} {...{ newMessage }}></Header>
-      <Chatting className="chatting">
+      <Header
+        {...{ changeUser }}
+        user={newMessage.user ? "고은" : "정쿨"}
+        imgUrl={newMessage.user ? EUNKO : COOL}
+      ></Header>
+      <Chatting>
         <Empty />
         {messageList.map((message, index) => {
-          if (message.user) {
-            //user가 true인 경우=> 즉 고은님 대화만 보임
-            return (
-              <EUNKOMessage key={index}>
-                <Image src={EUNKO} />
-                <Content>{message.content}</Content>
-              </EUNKOMessage>
-            );
-          } else {
-            //시원님 대화창
-            return (
-              <COOLMessage key={index}>
-                <Content>{message.content}</Content>
-                <Image src={COOL} />
-              </COOLMessage>
-            );
-          }
+          return (
+            <MessageRow sending={!message.user} key={index}>
+              <Image src={message.user ? EUNKO : COOL} />
+              <Content>{message.content}</Content>
+            </MessageRow>
+          );
         })}
       </Chatting>
       <MessageSender
@@ -110,18 +93,14 @@ const Chatting = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const EUNKOMessage = styled.div`
+const MessageRow = styled.div`
   display: flex;
-  justify-content: flex-start;
-`;
-const COOLMessage = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  flex-direction: ${(props) => (props.sending ? "row-reverse" : "row")};
 `;
 const Image = styled.img`
   width: 60px;
-  padding: 0.5rem;
-  border-radius: 30px;
+  padding: 10px;
+  border-radius: 80px;
 `;
 const Content = styled.div`
   background: white;

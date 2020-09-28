@@ -51,8 +51,7 @@ export default function ChattingScreen() {
   }; //삼항연산자로 수정
 
   useEffect(() => {
-    window.scrollBy(0, document.body.scrollHeigh);
-    window.scrollBy({ behavior: "smooth" });
+    window.scrollBy(0, document.body.scrollHeight);
   }, [messageList]); //messageList가 변경됐을때 스크롤 내림
 
   return (

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export default function MessageSender({
   changeInputMessage,
@@ -15,7 +15,7 @@ export default function MessageSender({
         onChange={changeInputMessage}
         value={newMessage.content}
         onKeyPress={(e) => {
-          if (e.key === "Enter") {
+          if (e.key === 'Enter') {
             addMessage(e);
           }
         }}

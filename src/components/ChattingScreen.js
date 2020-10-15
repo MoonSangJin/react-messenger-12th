@@ -72,11 +72,7 @@ export default function ChattingScreen() {
           );
         })}
       </Chatting>
-      <MessageSender
-        {...{ changeInputMessage }}
-        {...{ newMessage }}
-        {...{ addMessage }}
-      />
+      <MessageSender {...{ changeInputMessage, newMessage, addMessage }} />
       <Empty />
     </Wrapper>
   );

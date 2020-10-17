@@ -60,7 +60,7 @@ export default function MainPage() {
 
 const Wrapper = styled.div`
   display: flex;
-  oveflow: auto;
+  height: 100vh;
 `;
 
 const MenuBar = styled.div`

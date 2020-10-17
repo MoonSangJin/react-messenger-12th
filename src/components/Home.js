@@ -12,7 +12,6 @@ export default function Friends() {
 
 const Wrapper = styled.div`
   background: #f7e600;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -11,7 +11,7 @@ export default function Friends() {
 }
 
 const Wrapper = styled.div`
-  heigh: 100vh;
+  height: unset;
 `;
 
 const FriendsNumber = styled.div``;

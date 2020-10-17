@@ -1,29 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Search from './Search';
-import data from '../list.json';
 import EachProfile from './EachProfile';
-export default function Profile({ ProfileNumber }) {
+import data from '../list.json';
+
+export default function Profile({}) {
   const [firstName, setFirstName] = useState('');
+  const [searchResult, setSearchResult] = useState(data);
 
-  const [filteredData, setFilterData] = useState(data);
+  const filterProfile = (find) => {
+    if (find === '') {
+      setSearchResult(data); //초기화면
+    } else {
+      //검색한거만 필터링
+      const result = data.filter((element) => element.name === find);
+      console.log(result);
+      setSearchResult(result);
+    }
+  };
 
-  const handleSearch = (e) => {
-    setFirstName(e.target.value);
-  };
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(firstName);
-    setFirstName('');
-    //firstName을 받아왔다는 표시해주고, 그 증거를 EachProfile로 props로 전달 EachProfile내에서 props확인해서 필터링해서 그리자
-  };
-  // const data_filter = data.filter((element) => element.name == 'Beenzino');
-  // console.log(data_filter);
+  useEffect(() => {
+    filterProfile(firstName);
+  }, [firstName]);
 
   return (
-    <Wrapper onClick={ProfileNumber}>
-      <Search {...{ firstName, handleSearch, submitHandler }}></Search>
-      <EachProfile {...{ filteredData }}></EachProfile>
+    <Wrapper>
+      <Search
+        {...{
+          setFirstName,
+        }}
+      ></Search>
+      <EachProfile {...{ searchResult }}></EachProfile>
     </Wrapper>
   );
 }

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import data from '../list.json';
-
-export default function EachProfile({ filteredData }) {
+export default function EachProfile({ searchResult }) {
   return (
     <Wrapper>
-      {data.map((profile, index) => {
+      {searchResult.map((profile, index) => {
         return (
           <ProfileRow key={index}>
             <ProfileImage src={profile.url} />

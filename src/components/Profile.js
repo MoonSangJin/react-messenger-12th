@@ -4,7 +4,7 @@ import Search from './Search';
 import EachProfile from './EachProfile';
 import data from '../list.json';
 
-export default function Profile({}) {
+export default function Profile({ whichState }) {
   const [firstName, setFirstName] = useState('');
   const [searchResult, setSearchResult] = useState(data);
 
@@ -30,7 +30,7 @@ export default function Profile({}) {
           setFirstName,
         }}
       ></Search>
-      <EachProfile {...{ searchResult }}></EachProfile>
+      <EachProfile {...{ searchResult, whichState }}></EachProfile>
     </Wrapper>
   );
 }

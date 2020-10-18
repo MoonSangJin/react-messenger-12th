@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import data from '../list.json';
-export default function EachProfile({ searchResult }) {
+import ProfileContent from './ProfileContent';
+export default function EachProfile({ searchResult, whichState }) {
   return (
     <Wrapper>
       {searchResult.map((profile, index) => {
         return (
           <ProfileRow key={index}>
-            <ProfileImage src={profile.url} />
-            <ProfileName>
-              {profile.name}
-              <ProfileContent>{profile.name}</ProfileContent>
-            </ProfileName>
+            <ProfilePart>
+              <ProfileImage src={profile.url} />
+              <ProfileName>{profile.name}</ProfileName>
+            </ProfilePart>
+            <ProfileContent {...{ profile, whichState }} />
           </ProfileRow>
         );
       })}
@@ -20,6 +20,17 @@ export default function EachProfile({ searchResult }) {
 }
 
 const Wrapper = styled.div``;
+
+const ProfileRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ProfilePart = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const ProfileImage = styled.img`
   width: 60px;
   height: 60px;
@@ -27,22 +38,6 @@ const ProfileImage = styled.img`
   margin: 5px;
 `;
 
-const ProfileRow = styled.div`
-  display: flex;
-  align-items: center;
-`;
 const ProfileName = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background: #aadbff;
-  width: 200px;
-  height: 50px;
-  border-radius: 20px;
-`;
-const ProfileContent = styled.div`
-  margin-left: 10px;
-  background: #f3f3f3;
-  border-radius: 3px;
-  padding: 4px;
+  margin-left: 8px;
 `;

@@ -23,7 +23,7 @@ export default function Header({ setFirstName }) {
       <Form onSubmit={submitHandler}>
         <Input
           type="text"
-          placeholder="검색"
+          placeholder="🔍 이름 검색"
           value={keyWord}
           onChange={handleSearch}
         ></Input>
@@ -31,6 +31,16 @@ export default function Header({ setFirstName }) {
     </Wrapper>
   );
 }
-const Wrapper = styled.div``;
-const Input = styled.input``;
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+const Input = styled.input`
+  width: 300px;
+  border-radius: 5px;
+  border: solid 1px #adadad;
+  box-shadow: inset 0 0 5px 5px #e6e6e6;
+  outline: none;
+  margin: 10px;
+`;
 const Form = styled.form``;

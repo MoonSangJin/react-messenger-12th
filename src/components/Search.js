@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 const Input = styled.input`
-  width: 300px;
+  width: 270px;
   border-radius: 5px;
   border: solid 1px #adadad;
   box-shadow: inset 0 0 5px 5px #e6e6e6;

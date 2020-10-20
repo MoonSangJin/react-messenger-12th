@@ -17,8 +17,6 @@ export default function Friends() {
 
 const Wrapper = styled.div`
   height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
 `;
 const FriendsRow = styled.div`
   display: flex;

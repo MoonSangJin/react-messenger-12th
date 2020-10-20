@@ -1,18 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProfileContent from './ProfileContent';
+import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
 export default function EachProfile({ searchResult, whichState }) {
   return (
     <Wrapper>
       {searchResult.map((profile, index) => {
         return (
-          <ProfileRow key={index}>
-            <ProfilePart>
+          <Link to="/ChattingScreen" style={{ textDecoration: 'none' }}>
+            <ProfileRow key={index} sending={whichState}>
               <ProfileImage src={profile.url} />
-              <ProfileName>{profile.name}</ProfileName>
-            </ProfilePart>
-            <ProfileContent {...{ profile, whichState }} />
-          </ProfileRow>
+              <ProfilePart>
+                <ProfileName>{profile.name}</ProfileName>
+                <ProfileContent {...{ profile, whichState }} />
+              </ProfilePart>
+            </ProfileRow>
+          </Link>
         );
       })}
     </Wrapper>
@@ -22,14 +25,19 @@ export default function EachProfile({ searchResult, whichState }) {
 const Wrapper = styled.div``;
 
 const ProfileRow = styled.div`
+  &:hover {
+    background-color: #f7f6f6;
+  }
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  white-space: nowrap;
+  margin-bottom: 8px;
 `;
 
 const ProfilePart = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  width: 100%;
 `;
 const ProfileImage = styled.img`
   width: 60px;
@@ -39,5 +47,8 @@ const ProfileImage = styled.img`
 `;
 
 const ProfileName = styled.div`
+  color: black;
+  width: 100%;
   margin-left: 8px;
+  margin-right: 15px;
 `;

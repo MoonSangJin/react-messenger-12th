@@ -10,6 +10,8 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SettingsIcon from '@material-ui/icons/Settings';
 
+import ChattingScreen from './ChattingScreen';
+
 export default function MainPage() {
   return (
     <Wrapper>
@@ -52,6 +54,8 @@ export default function MainPage() {
           <Route exact path="/" component={Home} />
           <Route exact path="/Friends" component={Friends} />
           <Route exact path="/Chatting" component={Chatting} />
+
+          <Route exact path="/ChattingScreen" component={ChattingScreen} />
         </MessageBar>
       </Router>
     </Wrapper>
@@ -74,6 +78,8 @@ const MenuBar = styled.div`
 const MessageBar = styled.div`
   background: #white;
   width: 80vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
 `;
 
 const Empty = styled.div`

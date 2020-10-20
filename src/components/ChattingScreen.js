@@ -80,9 +80,11 @@ export default function ChattingScreen() {
 
 const Wrapper = styled.div`
   background: #abc1d1;
+  height: 100vh;
 `;
 const Empty = styled.div`
   height: 100px;
+  background: #abc1d1;
 `;
 const Chatting = styled.div`
   display: flex;
@@ -91,6 +93,7 @@ const Chatting = styled.div`
 const MessageRow = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.sending ? 'row-reverse' : 'row')};
+  background: #abc1d1;
 `;
 const Image = styled.img`
   width: 60px;

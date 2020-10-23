@@ -80,7 +80,7 @@ export default function ChattingScreen() {
 
 const Wrapper = styled.div`
   background: #abc1d1;
-  height: 100vh;
+  height: 100%;
 `;
 const Empty = styled.div`
   height: 100px;

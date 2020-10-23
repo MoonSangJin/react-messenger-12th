@@ -1,13 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProfileContent from './ProfileContent';
-import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
-export default function EachProfile({ searchResult, whichState }) {
+import MyProfile from './MyProfile';
+import { Link } from 'react-router-dom';
+export default function EachProfile({ searchResult, whichState, searching }) {
   return (
     <Wrapper>
+      <MyProfile {...{ whichState, searching }} />
       {searchResult.map((profile, index) => {
         return (
-          <Link to="/ChattingScreen" style={{ textDecoration: 'none' }}>
+          <Link
+            to="/ChattingScreen"
+            style={{ textDecoration: 'none' }}
+            key={index}
+          >
             <ProfileRow key={index} sending={whichState}>
               <ProfileImage src={profile.url} />
               <ProfilePart>

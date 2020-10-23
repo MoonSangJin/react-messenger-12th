@@ -69,7 +69,7 @@ const Wrapper = styled.div`
 
 const MenuBar = styled.div`
   background: #432616;
-  width: 20vw;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -77,7 +77,7 @@ const MenuBar = styled.div`
 
 const MessageBar = styled.div`
   background: #white;
-  width: 80vw;
+  width: 80%;
   overflow-x: hidden;
   overflow-y: scroll;
 `;

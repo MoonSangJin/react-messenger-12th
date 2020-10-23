@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Profile from './Profile';
 import AddIcon from '@material-ui/icons/Add';

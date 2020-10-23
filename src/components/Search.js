@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-export default function Header({ setFirstName }) {
+export default function Header({ setFirstName, setSearching }) {
   const [keyWord, setKeyWord] = useState('');
   const handleSearch = (e) => {
     //search창에서 입력시마다 동작
@@ -16,7 +16,8 @@ export default function Header({ setFirstName }) {
 
   useEffect(() => {
     setFirstName(keyWord);
-  }, [keyWord, setFirstName]);
+    setSearching(true);
+  }, [keyWord, setFirstName, setSearching]);
 
   return (
     <Wrapper>

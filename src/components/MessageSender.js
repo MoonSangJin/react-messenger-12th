@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   align-items: center;
   position: fixed;
   bottom: 0px;
-  width: 100%;
+  width: 80%;
 `;
 const Input = styled.input`
   border-radius: 25px;

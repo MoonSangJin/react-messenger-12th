@@ -5,7 +5,7 @@ import HomeLogo from '../kakao.jpg';
 export default function Friends() {
   return (
     <Wrapper>
-      <img src={HomeLogo} width="150px" />
+      <img src={HomeLogo} width="150px" alt="home" />
     </Wrapper>
   );
 }

@@ -42,10 +42,12 @@ export default function MainPage() {
             <NotificationsIcon
               fontSize="large"
               style={{ color: 'white', margin: '10px' }}
+              onClick={() => alert('mute')}
             />
             <SettingsIcon
               fontSize="large"
               style={{ color: 'white', margin: '10px' }}
+              onClick={() => alert('setting')}
             />
           </Empty>
         </MenuBar>
@@ -54,7 +56,6 @@ export default function MainPage() {
           <Route exact path="/" component={Home} />
           <Route exact path="/Friends" component={Friends} />
           <Route exact path="/Chatting" component={Chatting} />
-
           <Route exact path="/ChattingScreen" component={ChattingScreen} />
         </MessageBar>
       </Router>

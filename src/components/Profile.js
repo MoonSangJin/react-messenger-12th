@@ -15,8 +15,7 @@ export default function Profile({ whichState }) {
       setSearching(false);
     } else {
       //검색한거만 필터링
-      const result = data.filter((element) => element.name === find);
-      console.log(result);
+      const result = data.filter((element) => element.name.indexOf(find) === 0);
       setSearchResult(result);
     }
   };

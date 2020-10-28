@@ -5,7 +5,7 @@ export default function Header({ setFirstName, setSearching }) {
   const [keyWord, setKeyWord] = useState('');
   const handleSearch = (e) => {
     //search창에서 입력시마다 동작
-    console.log(`${keyWord}찾는중`); //이때 eachprofile보이게
+    //console.log(`${keyWord}찾는중`); //이때 eachprofile보이게
     setKeyWord(e.target.value);
   };
 

@@ -97,8 +97,12 @@ const MessageRow = styled.div`
 `;
 const Image = styled.img`
   width: 60px;
+  height: 60px;
+  //safari에서는 image hegiht를 조정해 주어야한다. 드디어 해결!!
+  object-fit: cover;
   padding: 10px;
   border-radius: 80px;
+  flex-shrink: 0;
 `;
 const Content = styled.div`
   background: white;
